@@ -1,0 +1,17 @@
+url,label
+http://192.168.1.1/login.php,1
+http://paypal.com@phishing-site.com,1
+http://bit.ly/steal-password,1
+http://fake-facebook-login.com,1
+https://secure-paypal-login.com,1
+https://bankofamerica-verify.com,1
+https://phish-get-password/,1
+https://login-secure-netflix.com,1
+https://google.com,0
+https://github.com,0
+https://wikipedia.org,0
+https://microsoft.com,0
+https://paypal.com,0
+https://facebook.com,0
+https://amazon.com,0
+https://netflix.com,0
