@@ -1,0 +1,9 @@
+url,label
+http://192.168.1.1/login.php,1
+http://paypal.com@phishing-site.com,1
+http://bit.ly/steal-password,1
+http://fake-facebook-login.com,1
+https://google.com,0
+https://github.com,0
+https://wikipedia.org,0
+https://microsoft.com,0

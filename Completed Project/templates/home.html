@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard - Stay Safe from Phishing Attacks</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#f97316'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-['Pacifico'] text-primary">PhishDetector</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#learn" class="text-gray-600 hover:text-primary">Learn</a>
+                    <a href="#warning-signs" class="text-gray-600 hover:text-primary">Warning Signs</a>
+                    <a href="#prevention" class="text-gray-600 hover:text-primary">Prevention</a>
+                    <a href="#examples" class="text-gray-600 hover:text-primary">Examples</a>
+                    <a href="#checker"
+                        class="bg-primary text-white px-4 py-2 !rounded-button cursor-pointer hover:bg-primary/90">Check
+                        Website</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16">
+        <section class="relative bg-gradient-to-r from-blue-50 to-blue-100 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 py-24">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h1 class="text-5xl font-bold text-gray-900 mb-6">Protect Yourself from Phishing Attacks</h1>
+                        <p class="text-xl text-gray-600 mb-8">Learn to identify and prevent phishing attempts with our
+                            interactive guide. Stay one step ahead of cybercriminals.</p>
+                        <div class="flex space-x-4">
+                            <a href="#checker"
+                                class="bg-primary text-white px-6 py-3 !rounded-button cursor-pointer hover:bg-primary/90 whitespace-nowrap">Check
+                                Website Now</a>
+                            <a href="#learn"
+                                class="bg-white text-primary px-6 py-3 !rounded-button cursor-pointer hover:bg-gray-50 whitespace-nowrap">Start
+                                Learning</a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <img src="https://public.readdy.ai/ai/img_res/e8a37d3bb5dacaa1c4c47f4002e93f09.jpg"
+                            class="w-full h-auto rounded-lg shadow-2xl" alt="Phishing Protection Illustration">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="learn" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-16">Common Phishing Techniques</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+                            <i class="ri-mail-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Email Phishing</h3>
+                        <p class="text-gray-600 mb-4">Cybercriminals send deceptive emails impersonating legitimate
+                            companies to steal personal information.</p>
+                        <button class="text-primary hover:text-primary/80 font-medium cursor-pointer"
+                            onclick="showTechniqueDetails('email')">Learn More</button>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+                            <i class="ri-global-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Website Spoofing</h3>
+                        <p class="text-gray-600 mb-4">Fake websites that mimic legitimate ones to capture login
+                            credentials and personal data.</p>
+                        <button class="text-primary hover:text-primary/80 font-medium cursor-pointer"
+                            onclick="showTechniqueDetails('website')">Learn More</button>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+                            <i class="ri-message-2-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">SMS Phishing</h3>
+                        <p class="text-gray-600 mb-4">Text messages that trick users into clicking malicious links or
+                            sharing sensitive information.</p>
+                        <button class="text-primary hover:text-primary/80 font-medium cursor-pointer"
+                            onclick="showTechniqueDetails('sms')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="warning-signs" class="py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-16">Warning Signs to Watch For</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <div class="border border-gray-200 rounded-lg p-4 mb-4">
+                            <div class="flex items-center mb-4">
+                                <div class="w-8 h-8 flex items-center justify-center">
+                                    <i class="ri-error-warning-line text-red-500"></i>
+                                </div>
+                                <div class="ml-2">
+                                    <p class="text-sm text-gray-500">From: security@arnaz0n.com</p>
+                                    <p class="font-medium">Account Security Alert</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-4">Dear Valued Customer,</p>
+                            <p class="text-gray-600 mb-4">We've detected unusual activity on your account. Please verify
+                                your identity immediately by clicking the link below:</p>
+                            <a href="#" class="text-blue-600 underline">http://security-verify.arnaz0n.com/account</a>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 flex items-center justify-center mt-1">
+                                    <i class="ri-close-circle-line text-red-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium">Suspicious Domain</h4>
+                                    <p class="text-gray-600">Notice the misspelled domain "arnaz0n" instead of "amazon"
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 flex items-center justify-center mt-1">
+                                    <i class="ri-close-circle-line text-red-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium">Urgent Action Required</h4>
+                                    <p class="text-gray-600">Creating a sense of urgency is a common phishing tactic</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-6 h-6 flex items-center justify-center mt-1">
+                                    <i class="ri-close-circle-line text-red-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="font-medium">Generic Greeting</h4>
+                                    <p class="text-gray-600">Legitimate companies usually use your actual name</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="phishing-stats" class="bg-white p-6 rounded-lg shadow-lg" style="height: 400px"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="prevention" class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-16">Prevention Strategies</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+                            <i class="ri-shield-check-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Use Strong Passwords</h3>
+                        <p class="text-gray-600">Create unique, complex passwords for all accounts and enable two-factor
+                            authentication.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+                            <i class="ri-link-check-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Verify URLs</h3>
+                        <p class="text-gray-600">Always check website addresses carefully and look for secure HTTPS
+                            connections.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+                            <i class="ri-mail-check-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Check Email Headers</h3>
+                        <p class="text-gray-600">Examine sender addresses and email headers for signs of spoofing.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                        <div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mb-4">
+                            <i class="ri-update-line text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-4">Keep Software Updated</h3>
+                        <p class="text-gray-600">Regularly update your software and security tools to protect against
+                            vulnerabilities.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPLETELY REPLACE the empty examples section with this: -->
+        <section id="examples" class="py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-4">Can You Spot the Phish?</h2>
+                <p class="text-center text-gray-600 mb-12">Test your skills with real-world examples and interactive
+                    challenges</p>
+
+
+                <!-- Slide 1 -->
+                <li class="glide__slide bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4">
+                            <i class="ri-mail-line text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Example 1: Payment Service Alert</h3>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 mb-4">
+                        <div class="flex items-center mb-2">
+                            <div class="w-6 h-6 flex items-center justify-center">
+                                <i class="ri-error-warning-line text-red-500"></i>
+                            </div>
+                            <div class="ml-2">
+                                <p class="text-sm text-gray-500">From: service@paypai.com</p>
+                                <p class="font-medium">Your account has been limited</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-2">Dear Customer,</p>
+                        <p class="text-gray-600 mb-2">We've detected suspicious login attempts. Verify your
+                            account now to avoid permanent limitation:</p>
+                        <a href="#" class="text-blue-600 underline">https://paypai.com/secure-login</a>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg hidden" id="slide1-analysis">
+                        <h4 class="font-medium mb-2 flex items-center">
+                            <i class="ri-lightbulb-flash-line text-secondary mr-2"></i>
+                            What's Wrong Here?
+                        </h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                            <li>Misspelled domain (paypai vs paypal)</li>
+                            <li>Generic greeting instead of your name</li>
+                            <li>Urgent threat to force quick action</li>
+                            <li>Link doesn't match official PayPal domain</li>
+                        </ul>
+                    </div>
+                    <button onclick="toggleAnalysis('slide1-analysis')"
+                        class="mt-4 bg-primary text-white px-4 py-2 rounded-button hover:bg-primary/90 w-full">
+                        Reveal Analysis
+                    </button>
+                </li>
+
+                <!-- Slide 2 -->
+                <li class="glide__slide bg-white p-6 rounded-lg shadow-lg border border-gray-100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 flex items-center justify-center bg-blue-100 rounded-full mr-4">
+                            <i class="ri-global-line text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Example 2: Bank Login Page</h3>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 mb-4 bg-gray-50">
+                        <div class="text-sm text-gray-500 mb-2">
+                            https://secure.chase-bank.com.verify-account.net</div>
+                        <div class="text-center py-4">
+                            <div
+                                class="w-16 h-16 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i class="ri-bank-line text-primary text-2xl"></i>
+                            </div>
+                            <h4 class="font-bold mb-4">Chase Online Banking</h4>
+                            <input type="text" placeholder="Username" class="w-full p-2 border rounded mb-2">
+                            <input type="password" placeholder="Password" class="w-full p-2 border rounded mb-4">
+                            <button class="w-full bg-blue-600 text-white py-2 rounded">Sign In</button>
+                        </div>
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg hidden" id="slide2-analysis">
+                        <h4 class="font-medium mb-2 flex items-center">
+                            <i class="ri-lightbulb-flash-line text-secondary mr-2"></i>
+                            Red Flags:
+                        </h4>
+                        <ul class="list-disc pl-5 space-y-1 text-gray-700">
+                            <li>Actual domain is "verify-account.net" (not chase.com)</li>
+                            <li>No padlock icon in address bar</li>
+                            <li>Asks for full credentials upfront</li>
+                        </ul>
+                    </div>
+                    <button onclick="toggleAnalysis('slide2-analysis')"
+                        class="mt-4 bg-primary text-white px-4 py-2 rounded-button hover:bg-primary/90 w-full">
+                        Reveal Analysis
+                    </button>
+                </li>
+
+
+            <!-- Quiz -->
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-bold text-center mb-6">Phishing IQ Test</h3>
+
+                <!-- Question 1 -->
+                <div class="mb-8">
+                    <p class="font-medium mb-4">1. You receive this text message. What should you do?</p>
+                    <div class="border border-gray-200 rounded-lg p-4 mb-4 bg-gray-50">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full mr-3">
+                                <i class="ri-message-2-line text-primary"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">From: Apple (59672)</p>
+                                <p>Your iCloud was accessed from new device in Ukraine. Tap to verify: <span
+                                        class="text-blue-600">bit.ly/2Kj8Pq3</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <label class="flex items-start bg-gray-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q1" value="click-link" class="mt-1 mr-3">
+                            <span>Tap the link to check your account</span>
+                        </label>
+                        <label class="flex items-start bg-gray-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q1" value="forward" class="mt-1 mr-3">
+                            <span>Forward to your IT department</span>
+                        </label>
+                        <label class="flex items-start bg-gray-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q1" value="log-in-directly" class="mt-1 mr-3">
+                            <span>Log in directly via apple.com to check</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="mb-8">
+                    <p class="font-medium mb-4">2. Which email address is most likely phishing?</p>
+                    <div class="space-y-3">
+                        <label class="flex items-start bg-gray-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q2" value="amazon-com" class="mt-1 mr-3">
+                            <span>support@amazon.com</span>
+                        </label>
+                        <label class="flex items-start bg-gray-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q2" value="arnazon-payments" class="mt-1 mr-3">
+                            <span>security@arnazon-payments.com</span>
+                        </label>
+                        <label class="flex items-start bg-gray-50 p-3 rounded-lg cursor-pointer">
+                            <input type="radio" name="q2" value="orders-amazon" class="mt-1 mr-3">
+                            <span>no-reply@orders.amazon.com</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button onclick="checkQuizAnswers()"
+                    class="w-full bg-secondary text-white py-3 rounded-lg hover:bg-secondary/90 font-medium">
+                    Check Your Score
+                </button>
+
+                <div id="quiz-results" class="hidden mt-6 p-4 rounded-lg"></div>
+            </div>
+            </div>
+        </section>
+
+        <section id="checker" class="py-24 bg-gray-50">
+            <div class="max-w-3xl mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-8">Website Security Checker</h2>
+                <p class="text-center text-gray-600 mb-12">Enter a website URL to check if it's potentially dangerous or
+                    suspicious.</p>
+
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <form method="POST" action="/predict">
+                        <div class="mb-4">
+                            <label for="urlInput" class="block text-sm font-medium text-gray-700 mb-1">Website
+                                URL:</label>
+                            <div class="flex">
+                                <input type="text" name="link" id="urlInput" placeholder="https://example.com"
+                                    class="flex-1 p-3 border border-gray-200 rounded-l-lg focus:outline-none focus:border-primary">
+                                <button type="submit"
+                                    class="bg-primary text-white px-6 py-3 !rounded-r-button cursor-pointer hover:bg-primary/90 whitespace-nowrap">
+                                    Check Now
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="model" class="block text-sm font-medium text-gray-700 mb-1">Detection
+                                Model:</label>
+                            <select name="model" id="model"
+                                class="w-full p-3 border border-gray-200 rounded-lg focus:outline-none focus:border-primary">
+                                <option value="1">Desision Tree(Faster Analysis)</option>
+                                <option value="2">Random Forest(More Accurate)</option>
+                            </select>
+                        </div>
+
+                        {% if error %}
+                        <div class="mt-4 p-4 bg-red-50 text-red-700 rounded-lg flex items-start">
+                            <i class="ri-error-warning-line mt-1 mr-2"></i>
+                            <span>{{ error }}</span>
+                        </div>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-['Pacifico'] text-2xl mb-4">PhishDetector</h3>
+                    <p class="text-gray-400">Protecting you from online threats and phishing attacks.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#learn" class="text-gray-400 hover:text-white">Learn</a></li>
+                        <li><a href="#warning-signs" class="text-gray-400 hover:text-white">Warning Signs</a></li>
+                        <li><a href="#prevention" class="text-gray-400 hover:text-white">Prevention</a></li>
+                        <li><a href="#checker" class="text-gray-400 hover:text-white">Website Checker</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Security Tips</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Report Phishing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">FAQs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-twitter-line text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-facebook-line text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-linkedin-line text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="ri-github-line text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 PhishDetector. All rights reserved.Project by <em>GROUP 5<em></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const phishingStats = echarts.init(document.getElementById('phishing-stats'));
+        const statsOption = {
+            animation: false,
+            title: {
+                text: 'Phishing Attacks by Industry',
+                left: 'center',
+                textStyle: {
+                    color: '#1f2937'
+                }
+            },
+            tooltip: {
+                trigger: 'item',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                textStyle: {
+                    color: '#1f2937'
+                }
+            },
+            series: [{
+                type: 'pie',
+                radius: ['40%', '70%'],
+                itemStyle: {
+                    borderRadius: 8
+                },
+                label: {
+                    show: true,
+                    formatter: '{b}: {d}%'
+                },
+                data: [
+                    { value: 35, name: 'Financial Services', itemStyle: { color: 'rgba(87, 181, 231, 1)' } },
+                    { value: 25, name: 'E-commerce', itemStyle: { color: 'rgba(141, 211, 199, 1)' } },
+                    { value: 20, name: 'Social Media', itemStyle: { color: 'rgba(251, 191, 114, 1)' } },
+                    { value: 20, name: 'Others', itemStyle: { color: 'rgba(252, 141, 98, 1)' } }
+                ]
+            }]
+        };
+        phishingStats.setOption(statsOption);
+
+        window.addEventListener('resize', () => {
+            phishingStats.resize();
+        });
+
+        function showTechniqueDetails(technique) {
+            const details = {
+                email: {
+                    title: 'Email Phishing Details',
+                    content: 'Cybercriminals often use sophisticated email templates that look identical to legitimate companies. They may include urgent calls to action, threatening messages, or too-good-to-be-true offers.'
+                },
+                website: {
+                    title: 'Website Spoofing Details',
+                    content: 'Fake websites often have URLs that are slightly different from legitimate ones, such as using numbers instead of letters or adding extra characters. They may also lack HTTPS security.'
+                },
+                sms: {
+                    title: 'SMS Phishing Details',
+                    content: 'SMS phishing, or smishing, often includes shortened URLs to hide malicious links. Messages typically create urgency or offer prizes to encourage immediate action.'
+                }
+            };
+
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+            modal.innerHTML = `
+                <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+                    <h3 class="text-xl font-semibold mb-4">${details[technique].title}</h3>
+                    <p class="text-gray-600 mb-6">${details[technique].content}</p>
+                    <button class="bg-primary text-white px-4 py-2 !rounded-button hover:bg-primary/90" onclick="this.parentElement.parentElement.remove()">Close</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+    </script>
+    <script>
+        // Quiz logic
+        function checkQuizAnswers() {
+            const results = document.getElementById('quiz-results');
+            results.innerHTML = '';
+            results.classList.remove('hidden', 'bg-red-50', 'bg-green-50');
+
+            // Get selected answers
+            const q1 = document.querySelector('input[name="q1"]:checked');
+            const q2 = document.querySelector('input[name="q2"]:checked');
+
+            if (!q1 || !q2) {
+                results.innerHTML = '<p class="text-red-600">Please answer all questions!</p>';
+                results.classList.add('bg-red-50');
+                return;
+            }
+
+            let score = 0;
+            let feedback = [];
+
+            // Question 1
+            if (q1.value === "log-in-directly") {
+                score++;
+                feedback.push('<div class="mb-4"><p class="font-medium text-green-600">✓ Question 1: Correct!</p><p class="text-gray-700">Smart! Never click links in suspicious texts.</p></div>');
+            } else {
+                feedback.push('<div class="mb-4"><p class="font-medium text-red-600">✗ Question 1: Better Answer</p><p class="text-gray-700">Always navigate directly to the official website.</p></div>');
+            }
+
+            // Question 2
+            if (q2.value === "arnazon-payments") {
+                score++;
+                feedback.push('<div class="mb-4"><p class="font-medium text-green-600">✓ Question 2: Correct!</p><p class="text-gray-700">Good catch! "arnazon" is a clear misspelling.</p></div>');
+            } else {
+                feedback.push('<div class="mb-4"><p class="font-medium text-red-600">✗ Question 2: Better Answer</p><p class="text-gray-700">Look for subtle domain misspellings.</p></div>');
+            }
+
+            // Display results
+            results.innerHTML = `
+            <h4 class="font-bold text-lg mb-2">Your Score: ${score}/2</h4>
+            ${feedback.join('')}
+            <p class="mt-4 ${score === 2 ? 'text-green-600' : 'text-secondary'} font-medium">
+                ${score === 2 ? '🎉 Excellent! You\'re a phishing detection expert.' : '💡 Review the examples to improve!'}
+            </p>
+        `;
+
+            results.classList.add(score === 2 ? 'bg-green-50' : 'bg-red-50');
+        }
+
+        // For the carousel "Reveal Analysis" buttons
+        function toggleAnalysis(id) {
+            const element = document.getElementById(id);
+            element.classList.toggle('hidden');
+        }
+    </script>
+</body>
+
+</html>
